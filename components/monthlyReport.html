@@ -1,0 +1,48 @@
+<div class="text-center">
+    <h1>Monthly Report Page</h1>
+
+    <p>{{ message }}</p>
+
+    <div class="row">
+        <div class="month-selector col-sm-4" >
+            <span>Selected Month: {{ $ctrl.date | date:'yyyy-MMM' }}</span>
+
+            <datetimepicker data-ng-model="$ctrl.date"
+                            data-datetimepicker-config="{ startView:'month', minView:'month' }"
+                            data-on-set-time="$ctrl.onMonthSelected()"
+            ></datetimepicker>
+        </div>
+        <div class="col-sm-4" >
+            <table   class="table"
+                    class="table-condensed" style=" width:10cm; length:10cm";  >
+
+                <thead>
+                <tr >
+                    <th>Date</th>
+                    <th>Entrance Time</th>
+                    <th>Exit Time</th>
+                    <th>Total Time</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in $ctrl.records">
+                    <td>{{x.entrance  | date : 'yyyy-MMM-dd'}}</td>
+                    <td>{{x.entrance  | date : 'h:mm:ss a'}}</td>
+                    <td>{{x.exit | date : 'h:mm:ss a'}}</td>
+
+                    <td>{{$ctrl.compare(x, 'hours') + "." + $ctrl.compare(x, 'minutes')}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <h4>Powered by React</h4>
+            <react-pie-chart working-hours="$ctrl.workingHours" total="$ctrl.getTotal()">
+            </react-pie-chart>
+        </div>
+    </div>
+</div>
+
+
+

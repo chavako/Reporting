@@ -1,0 +1,39 @@
+<div class=" text-center">
+    <h1>Clickthetime Page</h1>
+
+    <p>{{ $ctrl.message }}</p>
+</div>
+
+<div class="dropdown form-group col-sm-6" >
+    <label>Entrance</label>
+    <a class="dropdown-toggle" id="dropdownStart" role="button" data-toggle="dropdown"
+       data-target="javascript:void(0)" href="javascript:void(0)">
+        <div class="input-group date">
+            <input type="text" class="form-control" data-ng-model="$ctrl.enteranceTime">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <datetimepicker data-ng-model="$ctrl.enteranceTime"
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdownStart', renderOn: 'end-date-changed' }"
+                        data-on-set-time="$ctrl.startDateOnSetTime()"
+                        data-before-render="startDateBeforeRender($dates)"></datetimepicker>
+    </ul>
+</div>
+
+<div class="dropdown form-group col-sm-6">
+    <label>Exit</label>
+    <a class="dropdown-toggle" id="dropdownEnd" role="button" data-toggle="dropdown"
+       data-target="javascript:void(0)" href="javascript:void(0)">
+        <div class="input-group date">
+            <input type="text" class="form-control" data-ng-model="$ctrl.exitTime">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <datetimepicker data-ng-model="$ctrl.exitTime"
+                        data-datetimepicker-config="{ dropdownSelector: '#dropdownEnd', renderOn: 'start-date-changed' }"
+                        data-on-set-time="$ctrl.endDateOnSetTime()"
+                        data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate)"></datetimepicker>
+    </ul>
+</div>
